@@ -28,6 +28,8 @@
 
 #include "time_counter.h"
 
+#include "app_hooks.h"   /* fall detection application (Application/) */
+
 /***************************************************************************************************************************
  * Macro definitions
  ***************************************************************************************************************************/
@@ -77,6 +79,7 @@ void camera_display_thread_entry(void *pvParameters)
 {
     fsp_err_t fsp_status = FSP_SUCCESS;
     bool ai_result_updated = false;
+    uint32_t frame_capture_cnt = 0;
 
     FSP_PARAMETER_NOT_USED(pvParameters);
 
@@ -113,7 +116,7 @@ void camera_display_thread_entry(void *pvParameters)
     if(FSP_SUCCESS == fsp_status)
     {
         // Set display initialization complete flag
-        /* TODO: Replace with uT-Kernel */
+        /* uT-Kernel: FreeRTOS API mapped by rtos_to_mtk.h */
         xEventGroupSetBits(g_ai_app_event, HARDWARE_DISPLAY_INIT_DONE);
     }
     else
@@ -125,7 +128,7 @@ void camera_display_thread_entry(void *pvParameters)
     display_image_buffer_initialize();
 
     // Set display initialization complete flag
-    /* TODO: Replace with uT-Kernel */
+    /* uT-Kernel: FreeRTOS API mapped by rtos_to_mtk.h */
     xEventGroupSetBits(g_ai_app_event, HARDWARE_DISPLAY_INIT_DONE);
 #endif
 
@@ -138,7 +141,7 @@ void camera_display_thread_entry(void *pvParameters)
     if(FSP_SUCCESS == fsp_status)
     {
         // Set camera initialization complete flag
-        /* TODO: Replace with uT-Kernel */
+        /* uT-Kernel: FreeRTOS API mapped by rtos_to_mtk.h */
         xEventGroupSetBits(g_ai_app_event, HARDWARE_CAMERA_INIT_DONE);
     }
     else
@@ -150,7 +153,7 @@ void camera_display_thread_entry(void *pvParameters)
     camera_image_buffer_initialize();
 
     // Set camera initialization complete flag
-    /* TODO: Replace with uT-Kernel */
+    /* uT-Kernel: FreeRTOS API mapped by rtos_to_mtk.h */
     xEventGroupSetBits(g_ai_app_event, HARDWARE_CAMERA_INIT_DONE);
 #endif
 
@@ -159,7 +162,7 @@ void camera_display_thread_entry(void *pvParameters)
     TimeCounter_CountReset();
 
     // Wait for all required hardware and software initialization complete
-    /* TODO: Replace with uT-Kernel */
+    /* uT-Kernel: FreeRTOS API mapped by rtos_to_mtk.h */
     xEventGroupWaitBits(g_ai_app_event, (HARDWARE_DISPLAY_INIT_DONE | HARDWARE_CAMERA_INIT_DONE | HARDWARE_ETHOSU_INIT_DONE | SOFTWARE_AI_INFERENCE_INIT_DONE), pdFALSE, pdTRUE, portMAX_DELAY);
 
 #if (ENABLE_CAMERA_INPUT == 1)
@@ -171,10 +174,11 @@ void camera_display_thread_entry(void *pvParameters)
     {
 #if (ENABLE_CAMERA_INPUT == 1)
         // Wait for camera data input
-        /* TODO: Replace with uT-Kernel */
+        /* uT-Kernel: FreeRTOS API mapped by rtos_to_mtk.h */
         xEventGroupWaitBits(g_ai_app_event, CAMERA_CAPTURE_COMPLETED, pdTRUE, pdTRUE, portMAX_DELAY);
 
         time_counter_start = TimeCounter_CurrentCountGet();
+        frame_capture_cnt  = time_counter_start;   /* start point of the "frame -> alert" latency */
 
         // Post processing for camera image capture. After this process is completed, user app can take an image from camera_capture_image_rgb565[].
         camera_capture_post_process();
@@ -196,27 +200,31 @@ void camera_display_thread_entry(void *pvParameters)
         time_counter_end = TimeCounter_CurrentCountGet();
         application_processing_time.ai_inference_pre_processing_time_ms = TimeCounter_CountValueConvertToMs(time_counter_start, time_counter_end);
 
+        // Tell the application which frame the AI input comes from (latency measurement, heartbeat)
+        app_on_ai_input_ready(frame_capture_cnt);
+
         // Set AI inference input image ready flag. AI inference thread may waiting this flag set.
-        /* TODO: Replace with uT-Kernel */
+        /* uT-Kernel: FreeRTOS API mapped by rtos_to_mtk.h */
         xEventGroupSetBits(g_ai_app_event, AI_INFERENCE_INPUT_IMAGE_READY);
 
         // Make a change for immediate task switch
-        /* TODO: Replace with uT-Kernel */
+        /* uT-Kernel: FreeRTOS API mapped by rtos_to_mtk.h */
         vTaskDelay(1);
 
         // Check if new AI inference result is arrived
         ai_result_updated = ((xEventGroupGetBits(g_ai_app_event) & AI_INFERENCE_RESULT_UPDATED) != 0) ? true : false;
         xEventGroupClearBits(g_ai_app_event, AI_INFERENCE_RESULT_UPDATED);
 
-#if (ENABLE_LCD_DISPLAY_OUTPUT == 1)
-        // Display camera image and AI inference result on display screen
+#if (ENABLE_LCD_DISPLAY_OUTPUT == 1) && (APP_PRIVACY_UI_ENABLE == 0)
+        // Display camera image and AI inference result on display screen (debug only).
+        // With APP_PRIVACY_UI_ENABLE the UI task draws the privacy screen instead and the camera image is never shown.
         do_face_reconition_screen(ai_result_updated);
 #endif
 
         // Output the result to Terminal Software
         console_output(ai_result_updated);
 
-        /* TODO: Replace with uT-Kernel */
+        /* uT-Kernel: FreeRTOS API mapped by rtos_to_mtk.h */
         vTaskDelay(DISPLAY_THREAD_YIELD);
     }
 }

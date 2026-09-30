@@ -8,3 +8,7 @@
 # Logs / local backups
 *.log
 **/_backup*/
+
+# host unit test binary
+tests/fall_judge_test
+build/

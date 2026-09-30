@@ -23,6 +23,8 @@
 
 #include "time_counter.h"
 
+#include "app_hooks.h"   /* fall detection application (Application/) */
+
 /***************************************************************************************************************************
  * Macro definitions
  ***************************************************************************************************************************/
@@ -165,22 +167,22 @@ void ai_inference_thread_entry(void *pvParameters)
     vision_ai_app_err_t vision_ai_status = VISION_AI_APP_SUCCESS;
 
     /* Wait for display and camera initialization complete */
-    /* TODO: Replace with uT-Kernel */
+    /* uT-Kernel: FreeRTOS API mapped by rtos_to_mtk.h */
     xEventGroupWaitBits(g_ai_app_event, (HARDWARE_DISPLAY_INIT_DONE | HARDWARE_CAMERA_INIT_DONE), pdFALSE, pdTRUE, portMAX_DELAY);
 
     RM_ETHOSU_Open(&g_rm_ethosu0_ctrl, &g_rm_ethosu0_cfg);
 
-    /* TODO: Replace with uT-Kernel */
+    /* uT-Kernel: FreeRTOS API mapped by rtos_to_mtk.h */
     xEventGroupSetBits(g_ai_app_event, HARDWARE_ETHOSU_INIT_DONE);
 
     /* RegisterDebugLogCallback(print_log); */
 
-    /* TODO: Replace with uT-Kernel */
+    /* uT-Kernel: FreeRTOS API mapped by rtos_to_mtk.h */
     xEventGroupSetBits(g_ai_app_event, SOFTWARE_AI_INFERENCE_INIT_DONE);
 
     while (true)
     {
-        /* TODO: Replace with uT-Kernel */
+        /* uT-Kernel: FreeRTOS API mapped by rtos_to_mtk.h */
         xEventGroupWaitBits(g_ai_app_event, AI_INFERENCE_INPUT_IMAGE_READY, pdTRUE, pdTRUE, portMAX_DELAY);
 
         /* restart face detection statistics for each inference */
@@ -199,7 +201,12 @@ void ai_inference_thread_entry(void *pvParameters)
             handle_error(VISION_AI_APP_ERR_AI_INFERENCE);
         }
 
-        /* TODO: Replace with uT-Kernel */
+#if (APP_FALL_DETECTION_ENABLE == 1)
+        /* Hand the result to the judge task through the message buffer (non-blocking) */
+        app_post_inference_result(g_ai_detection, AI_MAX_DETECTION_NUM);
+#endif
+
+        /* uT-Kernel: FreeRTOS API mapped by rtos_to_mtk.h */
         xEventGroupSetBits(g_ai_app_event, AI_INFERENCE_RESULT_UPDATED);
 
         /*
@@ -207,7 +214,7 @@ void ai_inference_thread_entry(void *pvParameters)
          * so a relatively larger delay is used. This value should not be too low; otherwise, the display thread
          * is negatively influenced. This value should be reevaluated if the system is updated.
          */
-        /* TODO: Replace with uT-Kernel */
+        /* uT-Kernel: FreeRTOS API mapped by rtos_to_mtk.h */
         vTaskDelay(AI_THREAD_YIELD);
     }
 }
