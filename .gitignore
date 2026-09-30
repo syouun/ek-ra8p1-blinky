@@ -1,1 +1,10 @@
+# e2 studio workspace metadata
 /.metadata/
+
+# Build outputs (build from source; see docs/setup_guide.md)
+**/Debug/
+**/Release/
+
+# Logs / local backups
+*.log
+**/_backup*/
