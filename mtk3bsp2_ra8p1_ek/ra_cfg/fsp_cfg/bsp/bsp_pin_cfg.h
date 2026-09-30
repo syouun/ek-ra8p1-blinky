@@ -30,7 +30,7 @@ FSP_HEADER
 #define OSPI_ECS_ARDUINO_D6 (BSP_IO_PORT_01_PIN_05) /* See SW4 in manual */
 #define OSPI_RESET (BSP_IO_PORT_01_PIN_06) /* See SW4 in manual */
 #define ETHERNET_MDINT (BSP_IO_PORT_01_PIN_07)
-#define J2_30 (BSP_IO_PORT_01_PIN_08) /* Enable when connected */
+#define MIPI_IF_EN (BSP_IO_PORT_01_PIN_08) /* Enable when connected */
 #define I3C_SDA_PU (BSP_IO_PORT_01_PIN_09) /* Enable I3C_SEL_L to use */
 #define ARDUINO_D9 (BSP_IO_PORT_01_PIN_10) /* Enable when connected */
 #define MIPI_INT (BSP_IO_PORT_01_PIN_11) /* See SW4 in manual */
@@ -117,7 +117,7 @@ FSP_HEADER
 #define PMOD2_GPIO2 (BSP_IO_PORT_07_PIN_04) /* Enable when connected */
 #define PARLCD_D18R2 (BSP_IO_PORT_07_PIN_07)
 #define ETHERNET_RST (BSP_IO_PORT_07_PIN_08)
-#define CAMERA_RESET (BSP_IO_PORT_07_PIN_09)
+#define CAM_RST (BSP_IO_PORT_07_PIN_09)
 #define PARLCD_EXTCLK (BSP_IO_PORT_07_PIN_10)
 #define PARLCD_D19R3 (BSP_IO_PORT_07_PIN_11)
 #define PARLCD_D20R4 (BSP_IO_PORT_07_PIN_12)

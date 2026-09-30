@@ -98,7 +98,7 @@
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 4) /* I3C */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 7) /* IIC2 */ | \
             (((1 > 0) ? 0U : 1U) << 8) /* IIC1 */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 9) /* IIC0 */ | \
+            (((1 > 0) ? 0U : 1U) << 9) /* IIC0 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 11) /* USBFS */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 12) /* USBHS */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 16) /* OSPI0 */ | \
@@ -125,8 +125,8 @@
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 11) /* SDHI1 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 12) /* SDHI0 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 13) /* DOC */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 15) /* GLCDC/MIPI-DSI/DRW */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 15) /* MIPI_CSI */ | \
+            (((1 > 0) ? 0U : 1U) << 15) /* GLCDC/MIPI-DSI/DRW */ | \
+            (((1 > 0) ? 0U : 1U) << 15) /* MIPI_CSI */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 16) /* CEU */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 24) /* PDM */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 26) /* CANFD1 */ | \
@@ -163,14 +163,14 @@
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 9) /* ULPT0 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 15) /* GPT COMMON */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 18) /* GPT13 */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 19) /* GPT12 */ | \
+            (((1 > 0) ? 0U : 1U) << 19) /* GPT12 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 20) /* GPT11 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 21) /* GPT10 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 27) /* GPT4 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 28) /* GPT3 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 29) /* GPT2 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 30) /* GPT1 */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 31) /* GPT0 */)
+            (((1 > 0) ? 0U : 1U) << 31) /* GPT0 */)
 #endif
 #ifndef BSP_TZ_CFG_MSSAR
 #define BSP_TZ_CFG_MSSAR (\
@@ -178,7 +178,7 @@
             (1U << 1) /* SRAM1 */ | \
             (1U << 2) /* SRAM2 */ | \
             (1U << 3) /* SRAM3 */ | \
-            (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 16) /* NPU */ | \
+            (((1 > 0) ? 0U : 1U) << 16) /* NPU */ | \
             (1U << 22) /* DTC0_DMAC0 */ | \
             (1U << 23) /* DTC1_DMAC1 */ | \
             (((RA_NOT_DEFINED > 0) ? 0U : 1U) << 31) /* ELC */)
@@ -437,7 +437,7 @@
 #endif
 
 #ifndef BSP_CFG_SDRAM_ENABLED
-#define BSP_CFG_SDRAM_ENABLED  (0)
+#define BSP_CFG_SDRAM_ENABLED  (1)
 #endif
 
 #ifndef BSP_CFG_SDRAM_TRAS

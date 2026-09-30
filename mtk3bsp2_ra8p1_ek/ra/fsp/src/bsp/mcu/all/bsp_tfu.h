@@ -13,7 +13,7 @@
 
 /* Mathematical Functions includes. */
 #ifdef __cplusplus
- #include <cmath>
+ #include <math.h>
 #else
  #include <math.h>
 #endif

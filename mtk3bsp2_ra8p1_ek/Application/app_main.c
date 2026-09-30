@@ -57,6 +57,38 @@ LOCAL void task_3(INT stacd, void *exinf)
 	}
 }
 
+
+/* --- AI & Camera Tasks --- */
+ID g_ai_app_event;
+
+extern void camera_display_thread_entry(void *pvParameters);
+extern void ai_inference_thread_entry(void *pvParameters);
+
+LOCAL void task_camera(INT stacd, void *exinf)
+{
+    camera_display_thread_entry(NULL);
+    tk_ext_tsk();
+}
+LOCAL T_CTSK ctsk_camera = {
+    .itskpri = 9,
+    .stksz = 8192,
+    .task = task_camera,
+    .tskatr = TA_HLNG | TA_RNG3,
+};
+
+LOCAL void task_ai(INT stacd, void *exinf)
+{
+    ai_inference_thread_entry(NULL);
+    tk_ext_tsk();
+}
+LOCAL T_CTSK ctsk_ai = {
+    .itskpri = 10,
+    .stksz = 32768,
+    .task = task_ai,
+    .tskatr = TA_HLNG | TA_RNG3,
+};
+/* ------------------------ */
+
 /* usermain関数 */
 EXPORT INT usermain(void)
 {
@@ -77,6 +109,21 @@ EXPORT INT usermain(void)
 
 	tskid_3 = tk_cre_tsk(&ctsk_3);
 	tk_sta_tsk(tskid_3, 0);
+
+	
+	/* Create AI Event Flag */
+	T_CFLG cflg = {
+		.flgatr = TA_TFIFO | TA_WMUL,
+		.iflgptn = 0
+	};
+	g_ai_app_event = tk_cre_flg(&cflg);
+
+	/* Start Camera & AI Tasks */
+	ID tskid_camera = tk_cre_tsk(&ctsk_camera);
+	tk_sta_tsk(tskid_camera, 0);
+	
+	ID tskid_ai = tk_cre_tsk(&ctsk_ai);
+	tk_sta_tsk(tskid_ai, 0);
 
 	tk_slp_tsk(TMO_FEVR);
 

@@ -4,20 +4,52 @@
 #include <stdint.h>
 #include "bsp_api.h"
 #include "common_data.h"
+#include "r_gpt.h"
+#include "r_timer_api.h"
 #include "r_iic_master.h"
 #include "r_i2c_master_api.h"
 #include "r_adc_b.h"
 #include "r_adc_api.h"
 FSP_HEADER
+/** Timer on GPT Instance. */
+extern const timer_instance_t g_time_counter;
+
+/** Access the GPT instance using these structures when calling API functions directly (::p_api is not used). */
+extern gpt_instance_ctrl_t g_time_counter_ctrl;
+extern const timer_cfg_t g_time_counter_cfg;
+
+#ifndef NULL
+void NULL(timer_callback_args_t *p_args);
+#endif
+/** Timer on GPT Instance. */
+extern const timer_instance_t g_cam_clk;
+
+/** Access the GPT instance using these structures when calling API functions directly (::p_api is not used). */
+extern gpt_instance_ctrl_t g_cam_clk_ctrl;
+extern const timer_cfg_t g_cam_clk_cfg;
+
+#ifndef NULL
+void NULL(timer_callback_args_t *p_args);
+#endif
 /* I2C Master on IIC Instance. */
-extern const i2c_master_instance_t g_i2c_master0;
+extern const i2c_master_instance_t g_i2c_master1;
 
 /** Access the I2C Master instance using these structures when calling API functions directly (::p_api is not used). */
-extern iic_master_instance_ctrl_t g_i2c_master0_ctrl;
-extern const i2c_master_cfg_t g_i2c_master0_cfg;
+extern iic_master_instance_ctrl_t g_i2c_master1_ctrl;
+extern const i2c_master_cfg_t g_i2c_master1_cfg;
 
 #ifndef NULL
 void NULL(i2c_master_callback_args_t *p_args);
+#endif
+/* I2C Master on IIC Instance. */
+extern const i2c_master_instance_t g_cam_i2c_master;
+
+/** Access the I2C Master instance using these structures when calling API functions directly (::p_api is not used). */
+extern iic_master_instance_ctrl_t g_cam_i2c_master_ctrl;
+extern const i2c_master_cfg_t g_cam_i2c_master_cfg;
+
+#ifndef cam_i2c_master_callback
+void cam_i2c_master_callback(i2c_master_callback_args_t *p_args);
 #endif
 /** ADC on ADC_B instance. */
 extern const adc_instance_t g_adc0;

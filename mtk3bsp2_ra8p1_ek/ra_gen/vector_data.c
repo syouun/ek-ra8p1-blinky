@@ -22,6 +22,20 @@
             [15] = iic_master_txi_isr, /* IIC1 TXI (Transmit data empty) */
             [16] = iic_master_tei_isr, /* IIC1 TEI (Transmit end) */
             [17] = iic_master_eri_isr, /* IIC1 ERI (Transfer error) */
+            [18] = iic_master_rxi_isr, /* IIC0 RXI (Receive data full) */
+            [19] = iic_master_txi_isr, /* IIC0 TXI (Transmit data empty) */
+            [20] = iic_master_tei_isr, /* IIC0 TEI (Transmit end) */
+            [21] = iic_master_eri_isr, /* IIC0 ERI (Transfer error) */
+            [22] = drw_int_isr, /* DRW INT (DRW interrupt) */
+            [23] = glcdc_line_detect_isr, /* GLCDC LINE DETECT (Specified line) */
+            [24] = vin_status_isr, /* VIN IRQ (Interrupt Request) */
+            [25] = vin_error_isr, /* VIN ERR (Interrupt Request for SYNC Error) */
+            [26] = mipi_csi_rx_isr, /* MIPICSI RX (Receive interrupt) */
+            [27] = mipi_csi_dl_isr, /* MIPICSI DL (Data Lane interrupt) */
+            [28] = mipi_csi_vc_isr, /* MIPICSI VC (Virtual Channel interrupt) */
+            [29] = mipi_csi_pm_isr, /* MIPICSI PM (Power Management interrupt) */
+            [30] = mipi_csi_gst_isr, /* MIPICSI GST (Generic Short Packet interrupt) */
+            [31] = rm_ethosu_isr, /* NPU IRQ (NPU IRQ) */
         };
         #if BSP_FEATURE_ICU_HAS_IELSR
         const bsp_interrupt_event_t g_interrupt_event_link_select[BSP_ICU_VECTOR_NUM_ENTRIES] =
@@ -44,6 +58,20 @@
             [15] = BSP_PRV_VECT_ENUM(EVENT_IIC1_TXI,GROUP7), /* IIC1 TXI (Transmit data empty) */
             [16] = BSP_PRV_VECT_ENUM(EVENT_IIC1_TEI,GROUP0), /* IIC1 TEI (Transmit end) */
             [17] = BSP_PRV_VECT_ENUM(EVENT_IIC1_ERI,GROUP1), /* IIC1 ERI (Transfer error) */
+            [18] = BSP_PRV_VECT_ENUM(EVENT_IIC0_RXI,GROUP2), /* IIC0 RXI (Receive data full) */
+            [19] = BSP_PRV_VECT_ENUM(EVENT_IIC0_TXI,GROUP3), /* IIC0 TXI (Transmit data empty) */
+            [20] = BSP_PRV_VECT_ENUM(EVENT_IIC0_TEI,GROUP4), /* IIC0 TEI (Transmit end) */
+            [21] = BSP_PRV_VECT_ENUM(EVENT_IIC0_ERI,GROUP5), /* IIC0 ERI (Transfer error) */
+            [22] = BSP_PRV_VECT_ENUM(EVENT_DRW_INT,GROUP6), /* DRW INT (DRW interrupt) */
+            [23] = BSP_PRV_VECT_ENUM(EVENT_GLCDC_LINE_DETECT,GROUP7), /* GLCDC LINE DETECT (Specified line) */
+            [24] = BSP_PRV_VECT_ENUM(EVENT_VIN_IRQ,GROUP0), /* VIN IRQ (Interrupt Request) */
+            [25] = BSP_PRV_VECT_ENUM(EVENT_VIN_ERR,GROUP1), /* VIN ERR (Interrupt Request for SYNC Error) */
+            [26] = BSP_PRV_VECT_ENUM(EVENT_MIPICSI_RX,GROUP2), /* MIPICSI RX (Receive interrupt) */
+            [27] = BSP_PRV_VECT_ENUM(EVENT_MIPICSI_DL,GROUP3), /* MIPICSI DL (Data Lane interrupt) */
+            [28] = BSP_PRV_VECT_ENUM(EVENT_MIPICSI_VC,GROUP4), /* MIPICSI VC (Virtual Channel interrupt) */
+            [29] = BSP_PRV_VECT_ENUM(EVENT_MIPICSI_PM,GROUP5), /* MIPICSI PM (Power Management interrupt) */
+            [30] = BSP_PRV_VECT_ENUM(EVENT_MIPICSI_GST,GROUP6), /* MIPICSI GST (Generic Short Packet interrupt) */
+            [31] = BSP_PRV_VECT_ENUM(EVENT_NPU_IRQ,GROUP7), /* NPU IRQ (NPU IRQ) */
         };
         #endif
         #endif

@@ -23,7 +23,7 @@ FSP Configuration
     
   RA8P1 Family
     Enable inline BSP IRQ functions: Enabled
-    SDRAM: SDRAM Support: Disabled
+    SDRAM: SDRAM Support: Enabled
     SDRAM: Timings: tRAS (cycles): 6 cycles
     SDRAM: Timings: tRCD (cycles): 3 cycles
     SDRAM: Timings: tRP (cycles): 3 cycles
@@ -248,7 +248,7 @@ FSP Configuration
   RA8P1 event data
   RA Common
     Main stack size (bytes): 0x400
-    Heap size (bytes): 0
+    Heap size (bytes): 0x8000
     Bootloader Secondary XIP: Disabled
     MCU Vcc (mV): 3300
     Parameter checking: Disabled
@@ -304,7 +304,7 @@ FSP Configuration
     SPICLK Div /1
     CANFDCLK Src: PLL2R
     CANFDCLK Div /6
-    GPTCLK Src: PLL2P
+    GPTCLK Src: PLL2R
     GPTCLK Div /2
     GPT Src: GPTCLK
     LCDCLK Src: PLL2R
@@ -452,7 +452,7 @@ FSP Configuration
       P706 E17 - - - - Disabled - - "AGT0: AGTIO0; CEU: VIO_D10; ESWM_GMII/MII0: ET0_GTX_CLK; ESWM_RGMII0: RGMII0_TXC; ETHPHYCLK: ETHPHYCLK; GPT2: GTCPPO2; IRQ: IRQ7; PDM0: PDMDAT0; SCI1: RXD1; USB HS: USBHS_OVRCURB-DS" - なし - - 
       P707 F16 GLCDC_LCD_DATA18 PARLCD_D18R2 H None "Peripheral mode" - - "CEU: VIO_D11; ESWM_GMII/MII0: ET0_TX_ER; ETHPHYCLK: ETHPHYCLK; GLCDC: LCD_DATA18; GPT3: GTCPPO3; IRQ: IRQ8; PDM1: PDMDAT1; SCI1: TXD1; USB HS: USBHS_OVRCURA-DS" - IO - - 
       P708 N12 GPIO ETHERNET_RST M - "Output mode (Initial High)" - - "BUS: BC1; BUS: WR1; CAC: CACREF; CEU: VIO_VD; ESWM_GMII/MII: ET0_MDC; ESWM_RGMII0: ET0_MDC; ESWM_RMII0: ET0_MDC; GPT6: GTCPPO6; IIC2: SDA2; IRQ: IRQ11; SCI4: DE4; SCI4: SCK4; SPI1: MOSI1; SSIE: AUDIO_CLK" - IO - - 
-      P709 P16 GPIO CAMERA_RESET M - "Output mode (Initial Low)" - - "BUS: CS4; CEU: VIO_D13; ESWM_GMII/MII: ET0_MDIO; ESWM_RGMII0: ET0_MDIO; ESWM_RMII0: ET0_MDIO; GPT5: GTCPPO5; IIC2: SCL2; IRQ: IRQ10; SCI4: CTS_RTS4; SCI4: DE4; SPI1: MISO1" - IO - - 
+      P709 P16 GPIO CAM_RST M - "Output mode (Initial Low)" - - "BUS: CS4; CEU: VIO_D13; ESWM_GMII/MII: ET0_MDIO; ESWM_RGMII0: ET0_MDIO; ESWM_RMII0: ET0_MDIO; GPT5: GTCPPO5; IIC2: SCL2; IRQ: IRQ10; SCI4: CTS_RTS4; SCI4: DE4; SPI1: MISO1" - IO - - 
       P710 M13 GLCDC_LCD_EXTCLK PARLCD_EXTCLK H None "Peripheral mode" - - "BUS: CS5; CEU: VIO_D12; ESWM_GMII/MII: ET0_LINKSTA; ESWM_RGMII0: ET0_LINKSTA; ESWM_RMII0: ET0_LINKSTA; GLCDC: LCD_EXTCLK; GPT11: GTIOC11B; IRQ: IRQ17; SCI4: CTS4; SPI1: SSLB3" - I - - 
       P711 N15 GLCDC_LCD_DATA19 PARLCD_D19R3 H None "Peripheral mode" - - "AGT0: AGTEE0; ESWM_GMII/MII: GPTP0_PPS; ESWM_RGMII0: GPTP0_PPS; ESWM_RMII0: GPTP0_PPS; GLCDC: LCD_DATA19; GPT11: GTIOC11A; IRQ: IRQ3; SCI1: CTS_RTS1; SCI1: DE1; SPI1: SSLB2" - IO - - 
       P712 N13 GLCDC_LCD_DATA20 PARLCD_D20R4 H None "Peripheral mode" - - "AGT0: AGTOB0; ESWM_GMII/MII: GPTP1_CAPTURE; ESWM_RGMII1: GPTP1_CAPTURE; ESWM_RMII1: GPTP1_CAPTURE; GLCDC: LCD_DATA20; GPT2: GTIOC2B; IRQ: IRQ2; SCI1: CTS1; SPI1: SSLB1" - IO - - 
@@ -742,7 +742,7 @@ FSP Configuration
       P706 E17 - - - - Disabled - - "AGT0: AGTIO0; CEU: VIO_D10; ESWM_GMII/MII0: ET0_GTX_CLK; ESWM_RGMII0: RGMII0_TXC; ETHPHYCLK: ETHPHYCLK; GPT2: GTCPPO2; IRQ: IRQ7; PDM0: PDMDAT0; SCI1: RXD1; USB HS: USBHS_OVRCURB-DS" - なし - - 
       P707 F16 - PARLCD_D18R2 L None Disabled - - "CEU: VIO_D11; ESWM_GMII/MII0: ET0_TX_ER; ETHPHYCLK: ETHPHYCLK; GLCDC: LCD_DATA18; GPT3: GTCPPO3; IRQ: IRQ8; PDM1: PDMDAT1; SCI1: TXD1; USB HS: USBHS_OVRCURA-DS" - IO - - 
       P708 N12 - ETHERNET_RST L - Disabled - - "BUS: BC1; BUS: WR1; CAC: CACREF; CEU: VIO_VD; ESWM_GMII/MII: ET0_MDC; ESWM_RGMII0: ET0_MDC; ESWM_RMII0: ET0_MDC; GPT6: GTCPPO6; IIC2: SDA2; IRQ: IRQ11; SCI4: DE4; SCI4: SCK4; SPI1: MOSI1; SSIE: AUDIO_CLK" - IO - - 
-      P709 P16 - CAMERA_RESET L - Disabled - - "BUS: CS4; CEU: VIO_D13; ESWM_GMII/MII: ET0_MDIO; ESWM_RGMII0: ET0_MDIO; ESWM_RMII0: ET0_MDIO; GPT5: GTCPPO5; IIC2: SCL2; IRQ: IRQ10; SCI4: CTS_RTS4; SCI4: DE4; SPI1: MISO1" - IO - - 
+      P709 P16 - CAM_RST L - Disabled - - "BUS: CS4; CEU: VIO_D13; ESWM_GMII/MII: ET0_MDIO; ESWM_RGMII0: ET0_MDIO; ESWM_RMII0: ET0_MDIO; GPT5: GTCPPO5; IIC2: SCL2; IRQ: IRQ10; SCI4: CTS_RTS4; SCI4: DE4; SPI1: MISO1" - IO - - 
       P710 M13 - PARLCD_EXTCLK L None Disabled - - "BUS: CS5; CEU: VIO_D12; ESWM_GMII/MII: ET0_LINKSTA; ESWM_RGMII0: ET0_LINKSTA; ESWM_RMII0: ET0_LINKSTA; GLCDC: LCD_EXTCLK; GPT11: GTIOC11B; IRQ: IRQ17; SCI4: CTS4; SPI1: SSLB3" - I - - 
       P711 N15 - PARLCD_D19R3 L None Disabled - - "AGT0: AGTEE0; ESWM_GMII/MII: GPTP0_PPS; ESWM_RGMII0: GPTP0_PPS; ESWM_RMII0: GPTP0_PPS; GLCDC: LCD_DATA19; GPT11: GTIOC11A; IRQ: IRQ3; SCI1: CTS_RTS1; SCI1: DE1; SPI1: SSLB2" - IO - - 
       P712 N13 - PARLCD_D20R4 L None Disabled - - "AGT0: AGTOB0; ESWM_GMII/MII: GPTP1_CAPTURE; ESWM_RGMII1: GPTP1_CAPTURE; ESWM_RMII1: GPTP1_CAPTURE; GLCDC: LCD_DATA20; GPT2: GTIOC2B; IRQ: IRQ2; SCI1: CTS1; SPI1: SSLB1" - IO - - 
@@ -929,6 +929,32 @@ FSP Configuration
     DTC on Transmission and Reception: Disabled
     10-bit slave addressing: Disabled
     
+  Module "Timer, General PWM (r_gpt)"
+    Parameter Checking: Default (BSP)
+    Pin Output Support: Enabled
+    Write Protect Enable: Disabled
+    
+  Module "D/AVE 2D Port Interface (r_drw)"
+    Allow Indirect Mode: Enabled
+    Memory Allocation: Default
+    
+  Module "D/AVE 2D (r_drw)"
+  Module "Graphics LCD (r_glcdc)"
+    Parameter Checking: Default (BSP)
+    Color Correction: Off
+    
+  Module "Video Input (r_vin)"
+    Parameter Checking: Default (BSP)
+    
+  Module "MIPI Camera Interface (r_mipi_csi)"
+    Parameter Checking: Default (BSP)
+    
+  Module "MIPI Physical Layer (r_mipi_phy)"
+  Module "Arm Ethos-U Core Driver Wrapper (rm_ethosu)"
+    Parameter Checking: Default (BSP)
+    Ethos-U log level: Disabled
+    
+  Module "Arm Ethos-U Core Driver"
   HAL
     Instance "g_ioport I/O Port (r_ioport)"
       Name: g_ioport
@@ -1684,9 +1710,24 @@ FSP Configuration
       Scan Groups: Scan Group 8: FIFO Interrupt Enable: Disable
       Scan Groups: Scan Group 8: FIFO Interrupt Generation Level : 0
       
-    Instance "g_i2c_master0 I2C Master (r_iic_master)"
-      Name: g_i2c_master0
+    Instance "g_cam_i2c_master I2C Master (r_iic_master)"
+      Name: g_cam_i2c_master
       Channel: 1
+      Rate: Fast-mode
+      Custom Rate (bps): 0
+      Rise Time (ns): 120
+      Fall Time (ns): 120
+      Duty Cycle (%): 50
+      Slave Address: 0x00
+      Address Mode: 7-Bit
+      Timeout Mode: Short Mode
+      Timeout during SCL Low: Enabled
+      Callback: cam_i2c_master_callback
+      Interrupt Priority Level: Priority 7
+      
+    Instance "g_i2c_master1 I2C Master (r_iic_master)"
+      Name: g_i2c_master1
+      Channel: 0
       Rate: Standard
       Custom Rate (bps): 0
       Rise Time (ns): 120
@@ -1697,5 +1738,466 @@ FSP Configuration
       Timeout Mode: Short Mode
       Timeout during SCL Low: Enabled
       Callback: NULL
-      Interrupt Priority Level: Priority 7
+      Interrupt Priority Level: Priority 12
+      
+    Instance "g_cam_clk Timer, General PWM (r_gpt)"
+      General: Name: g_cam_clk
+      General: Channel: 12
+      General: Mode: Periodic
+      General: Period: 24000
+      General: Compare Match: Compare Match A: Status: Disabled
+      General: Compare Match: Compare Match A: Compare match value: 0x10000
+      General: Compare Match: Compare Match B: Status: Disabled
+      General: Compare Match: Compare Match B: Compare match value: 0x10000
+      General: Compare Match: Compare Match C: Status: Disabled
+      General: Compare Match: Compare Match C: Compare match value: 0x10000
+      General: Compare Match: Compare Match D: Status: Disabled
+      General: Compare Match: Compare Match D: Compare match value: 0x10000
+      General: Compare Match: Compare Match E: Status: Disabled
+      General: Compare Match: Compare Match E: Compare match value: 0x10000
+      General: Compare Match: Compare Match F: Status: Disabled
+      General: Compare Match: Compare Match F: Compare match value: 0x10000
+      General: Period Unit: Kilohertz
+      Output: Custom Waveform: GTIOA: Initial Output Level: Pin Level Low
+      Output: Custom Waveform: GTIOA: Cycle End Output Level: Pin Level Retain
+      Output: Custom Waveform: GTIOA: Compare Match Output Level: Pin Level Retain
+      Output: Custom Waveform: GTIOA: Retain Output Level at Count Stop: Disabled
+      Output: Custom Waveform: GTIOB: Initial Output Level: Pin Level Low
+      Output: Custom Waveform: GTIOB: Cycle End Output Level: Pin Level Retain
+      Output: Custom Waveform: GTIOB: Compare Match Output Level: Pin Level Retain
+      Output: Custom Waveform: GTIOB: Retain Output Level at Count Stop: Disabled
+      Output: Custom Waveform: Custom Waveform Enable: Disabled
+      Output: Duty Cycle Percent (only applicable in PWM mode): 50
+      Output: GTIOCA Output Enabled: True
+      Output: GTIOCA Stop Level: Pin Level Low
+      Output: GTIOCB Output Enabled: False
+      Output: GTIOCB Stop Level: Pin Level Low
+      Input: Count Up Source: 
+      Input: Count Down Source: 
+      Input: Start Source: 
+      Input: Stop Source: 
+      Input: Clear Source: 
+      Input: Capture A Source: 
+      Input: Capture B Source: 
+      Input: Noise Filter A Sampling Clock Select: No Filter
+      Input: Noise Filter B Sampling Clock Select: No Filter
+      Pin Polarity: GTIOCnA Polarity: Normal
+      Pin Polarity: GTIOCnB Polarity: Normal
+      Interrupts: Callback: NULL
+      Interrupts: Overflow/Crest Interrupt Priority: Disabled
+      Interrupts: Capture/Compare match A Interrupt Priority: Disabled
+      Interrupts: Capture/Compare match B Interrupt Priority: Disabled
+      Interrupts: Compare Match C Interrupt Priority: Disabled
+      Interrupts: Compare Match D Interrupt Priority: Disabled
+      Interrupts: Compare Match E Interrupt Priority: Disabled
+      Interrupts: Compare Match F Interrupt Priority: Disabled
+      Interrupts: Underflow/Trough Interrupt Priority: Disabled
+      Extra Features: Extra Features: Disabled
+      Extra Features: Output Disable: POEG Link: POEG Channel 0
+      Extra Features: Output Disable: Output Disable POEG Trigger: 
+      Extra Features: ADC Trigger: Start Event Trigger (Channels with GTINTAD only): 
+      Extra Features: ADC Trigger: ADC A Compare Match (Raw Counts): 0
+      Extra Features: ADC Trigger: ADC B Compare Match (Raw Counts): 0
+      Extra Features: Dead Time (Value range varies with Channel): Dead Time Count Up (Raw Counts): 0
+      Extra Features: Dead Time (Value range varies with Channel): Dead Time Count Down (Raw Counts) (Channels with GTDVD only): 0
+      Extra Features: Interrupt Skipping (Channels with GTITC only): Interrupt to Count: None
+      Extra Features: Interrupt Skipping (Channels with GTITC only): Interrupt Skip Count: 0
+      Extra Features: Interrupt Skipping (Channels with GTITC only): Skip ADC Events: None
+      Extra Features: Output Disable: GTIOCA Disable Setting: Disable Prohibited
+      Extra Features: Output Disable: GTIOCB Disable Setting: Disable Prohibited
+      
+    Instance "D/AVE 2D Port Interface (r_drw)"
+      D2 Device Handle Name: d2_handle
+      DRW Interrupt Priority: Priority 2
+      
+      Instance "D/AVE 2D (r_drw)"
+    Instance "g_lcd_glcdc Graphics LCD (r_glcdc)"
+      General: Name: g_lcd_glcdc
+      Interrupts: Callback Function: NULL
+      Interrupts: Line Detect Interrupt Priority: Priority 12
+      Interrupts: Underflow 1 Interrupt Priority: Disabled
+      Interrupts: Underflow 2 Interrupt Priority: Disabled
+      Input: Graphics Layer 1: General: Enabled: Yes
+      Input: Graphics Layer 1: General: Horizontal size: 1024
+      Input: Graphics Layer 1: General: Vertical size: 600
+      Input: Graphics Layer 1: General: Horizontal position: 0
+      Input: Graphics Layer 1: General: Vertical position: 0
+      Input: Graphics Layer 1: Framebuffer: Framebuffer name: fb_background
+      Input: Graphics Layer 1: Framebuffer: Number of framebuffers: 2
+      Input: Graphics Layer 1: Framebuffer: Section for framebuffer allocation: .sdram_noinit
+      Input: Graphics Layer 1: General: Color format: RGB565 (16-bit)
+      Input: Graphics Layer 1: General: Line descending mode: Disabled
+      Input: Graphics Layer 1: Line Repeat: Enable: Off
+      Input: Graphics Layer 1: Line Repeat: Repeat count: 0
+      Input: Graphics Layer 1: Fading: Mode: None
+      Input: Graphics Layer 1: Fading: Speed: 0
+      Input: Graphics Layer 2: General: Enabled: No
+      Input: Graphics Layer 2: General: Horizontal size: 480
+      Input: Graphics Layer 2: General: Vertical size: 854
+      Input: Graphics Layer 2: General: Horizontal position: 0
+      Input: Graphics Layer 2: General: Vertical position: 0
+      Input: Graphics Layer 2: Framebuffer: Framebuffer name: fb_foreground
+      Input: Graphics Layer 2: Framebuffer: Number of framebuffers: 2
+      Input: Graphics Layer 2: Framebuffer: Section for framebuffer allocation: .sdram_noinit
+      Input: Graphics Layer 2: General: Color format: RGB565 (16-bit)
+      Input: Graphics Layer 2: General: Line descending mode: Disabled
+      Input: Graphics Layer 2: Line Repeat: Enable: Off
+      Input: Graphics Layer 2: Line Repeat: Repeat count: 0
+      Input: Graphics Layer 2: Fading: Mode: None
+      Input: Graphics Layer 2: Fading: Speed: 0
+      Output: Timing: Horizontal total cycles: 559
+      Output: Timing: Horizontal active video cycles: 480
+      Output: Timing: Horizontal back porch cycles: 5
+      Output: Timing: Horizontal sync signal cycles: 10
+      Output: Timing: Horizontal sync signal polarity: Low active
+      Output: Timing: Vertical total lines: 894
+      Output: Timing: Vertical active video lines: 854
+      Output: Timing: Vertical back porch lines: 20
+      Output: Timing: Vertical sync signal lines: 5
+      Output: Timing: Vertical sync signal polarity: Low active
+      Output: Timing: Data Enable Signal Polarity: High active
+      Output: Timing: Sync edge: Falling edge
+      Output: Format: Color format: 24bits RGB888
+      Output: Format: Color order: RGB
+      Output: Format: Endian: Little endian
+      Output: Background: Alpha: 255
+      Output: Background: Red: 0
+      Output: Background: Green: 0
+      Output: Background: Blue: 0
+      CLUT: Enabled: No
+      CLUT: Size: 256
+      TCON: Hsync pin select: LCD_TCON1
+      TCON: Vsync pin select: LCD_TCON0
+      TCON: Data enable (DE) pin select: LCD_TCON2
+      TCON: Panel clock source: Internal clock (GLCDCLK)
+      TCON: Panel clock division ratio: 1/8
+      Color Correction: Process order: Brightness/contrast first
+      Color Correction: Brightness: Enabled: No
+      Color Correction: Brightness: Red channel: 512
+      Color Correction: Brightness: Green channel: 512
+      Color Correction: Brightness: Blue channel: 512
+      Color Correction: Contrast: Enabled: No
+      Color Correction: Contrast: Red channel gain: 128
+      Color Correction: Contrast: Green channel gain: 128
+      Color Correction: Contrast: Blue channel gain: 128
+      Color Correction: Gamma: Red: Off
+      Color Correction: Gamma: Green: Off
+      Color Correction: Gamma: Blue: Off
+      Color Correction: Gamma: Table Mode: Variable
+      Color Correction: Gamma: Tables: Red: Gain: 0: 1024
+      Color Correction: Gamma: Tables: Red: Gain: 1: 1024
+      Color Correction: Gamma: Tables: Red: Gain: 2: 1024
+      Color Correction: Gamma: Tables: Red: Gain: 3: 1024
+      Color Correction: Gamma: Tables: Red: Gain: 4: 1024
+      Color Correction: Gamma: Tables: Red: Gain: 5: 1024
+      Color Correction: Gamma: Tables: Red: Gain: 6: 1024
+      Color Correction: Gamma: Tables: Red: Gain: 7: 1024
+      Color Correction: Gamma: Tables: Red: Gain: 8: 1024
+      Color Correction: Gamma: Tables: Red: Gain: 9: 1024
+      Color Correction: Gamma: Tables: Red: Gain: 10: 1024
+      Color Correction: Gamma: Tables: Red: Gain: 11: 1024
+      Color Correction: Gamma: Tables: Red: Gain: 12: 1024
+      Color Correction: Gamma: Tables: Red: Gain: 13: 1024
+      Color Correction: Gamma: Tables: Red: Gain: 14: 1024
+      Color Correction: Gamma: Tables: Red: Gain: 15: 1024
+      Color Correction: Gamma: Tables: Red: Threshold: 1: 64
+      Color Correction: Gamma: Tables: Red: Threshold: 2: 128
+      Color Correction: Gamma: Tables: Red: Threshold: 3: 192
+      Color Correction: Gamma: Tables: Red: Threshold: 4: 256
+      Color Correction: Gamma: Tables: Red: Threshold: 5: 320
+      Color Correction: Gamma: Tables: Red: Threshold: 6: 384
+      Color Correction: Gamma: Tables: Red: Threshold: 7: 448
+      Color Correction: Gamma: Tables: Red: Threshold: 8: 512
+      Color Correction: Gamma: Tables: Red: Threshold: 9: 576
+      Color Correction: Gamma: Tables: Red: Threshold: 10: 640
+      Color Correction: Gamma: Tables: Red: Threshold: 11: 704
+      Color Correction: Gamma: Tables: Red: Threshold: 12: 768
+      Color Correction: Gamma: Tables: Red: Threshold: 13: 832
+      Color Correction: Gamma: Tables: Red: Threshold: 14: 896
+      Color Correction: Gamma: Tables: Red: Threshold: 15: 960
+      Color Correction: Gamma: Tables: Green: Gain: 0: 1024
+      Color Correction: Gamma: Tables: Green: Gain: 1: 1024
+      Color Correction: Gamma: Tables: Green: Gain: 2: 1024
+      Color Correction: Gamma: Tables: Green: Gain: 3: 1024
+      Color Correction: Gamma: Tables: Green: Gain: 4: 1024
+      Color Correction: Gamma: Tables: Green: Gain: 5: 1024
+      Color Correction: Gamma: Tables: Green: Gain: 6: 1024
+      Color Correction: Gamma: Tables: Green: Gain: 7: 1024
+      Color Correction: Gamma: Tables: Green: Gain: 8: 1024
+      Color Correction: Gamma: Tables: Green: Gain: 9: 1024
+      Color Correction: Gamma: Tables: Green: Gain: 10: 1024
+      Color Correction: Gamma: Tables: Green: Gain: 11: 1024
+      Color Correction: Gamma: Tables: Green: Gain: 12: 1024
+      Color Correction: Gamma: Tables: Green: Gain: 13: 1024
+      Color Correction: Gamma: Tables: Green: Gain: 14: 1024
+      Color Correction: Gamma: Tables: Green: Gain: 15: 1024
+      Color Correction: Gamma: Tables: Green: Threshold: 1: 64
+      Color Correction: Gamma: Tables: Green: Threshold: 2: 128
+      Color Correction: Gamma: Tables: Green: Threshold: 3: 192
+      Color Correction: Gamma: Tables: Green: Threshold: 4: 256
+      Color Correction: Gamma: Tables: Green: Threshold: 5: 320
+      Color Correction: Gamma: Tables: Green: Threshold: 6: 384
+      Color Correction: Gamma: Tables: Green: Threshold: 7: 448
+      Color Correction: Gamma: Tables: Green: Threshold: 8: 512
+      Color Correction: Gamma: Tables: Green: Threshold: 9: 576
+      Color Correction: Gamma: Tables: Green: Threshold: 10: 640
+      Color Correction: Gamma: Tables: Green: Threshold: 11: 704
+      Color Correction: Gamma: Tables: Green: Threshold: 12: 768
+      Color Correction: Gamma: Tables: Green: Threshold: 13: 832
+      Color Correction: Gamma: Tables: Green: Threshold: 14: 896
+      Color Correction: Gamma: Tables: Green: Threshold: 15: 960
+      Color Correction: Gamma: Tables: Blue: Gain: 0: 1024
+      Color Correction: Gamma: Tables: Blue: Gain: 1: 1024
+      Color Correction: Gamma: Tables: Blue: Gain: 2: 1024
+      Color Correction: Gamma: Tables: Blue: Gain: 3: 1024
+      Color Correction: Gamma: Tables: Blue: Gain: 4: 1024
+      Color Correction: Gamma: Tables: Blue: Gain: 5: 1024
+      Color Correction: Gamma: Tables: Blue: Gain: 6: 1024
+      Color Correction: Gamma: Tables: Blue: Gain: 7: 1024
+      Color Correction: Gamma: Tables: Blue: Gain: 8: 1024
+      Color Correction: Gamma: Tables: Blue: Gain: 9: 1024
+      Color Correction: Gamma: Tables: Blue: Gain: 10: 1024
+      Color Correction: Gamma: Tables: Blue: Gain: 11: 1024
+      Color Correction: Gamma: Tables: Blue: Gain: 12: 1024
+      Color Correction: Gamma: Tables: Blue: Gain: 13: 1024
+      Color Correction: Gamma: Tables: Blue: Gain: 14: 1024
+      Color Correction: Gamma: Tables: Blue: Gain: 15: 1024
+      Color Correction: Gamma: Tables: Blue: Threshold: 1: 64
+      Color Correction: Gamma: Tables: Blue: Threshold: 2: 128
+      Color Correction: Gamma: Tables: Blue: Threshold: 3: 192
+      Color Correction: Gamma: Tables: Blue: Threshold: 4: 256
+      Color Correction: Gamma: Tables: Blue: Threshold: 5: 320
+      Color Correction: Gamma: Tables: Blue: Threshold: 6: 384
+      Color Correction: Gamma: Tables: Blue: Threshold: 7: 448
+      Color Correction: Gamma: Tables: Blue: Threshold: 8: 512
+      Color Correction: Gamma: Tables: Blue: Threshold: 9: 576
+      Color Correction: Gamma: Tables: Blue: Threshold: 10: 640
+      Color Correction: Gamma: Tables: Blue: Threshold: 11: 704
+      Color Correction: Gamma: Tables: Blue: Threshold: 12: 768
+      Color Correction: Gamma: Tables: Blue: Threshold: 13: 832
+      Color Correction: Gamma: Tables: Blue: Threshold: 14: 896
+      Color Correction: Gamma: Tables: Blue: Threshold: 15: 960
+      Dithering: Enabled: No
+      Dithering: Mode: Truncate
+      Dithering: Pattern A: Pattern 11
+      Dithering: Pattern B: Pattern 11
+      Dithering: Pattern C: Pattern 11
+      Dithering: Pattern D: Pattern 11
+      
+    Instance "g_cam_vin Video Input (r_vin)"
+      General: Name: g_cam_vin
+      Output: Conversion: Color Space Conversion Bypass: False
+      Input: Interlaced: Interlace Mode: Odd/Even-field capture mode
+      Output: Endian Type: Little Endian
+      Output: Conversion: Dithering: Mode Control: Dithering with Cumulative Addition
+      Input: Interface Format: YCbCr-422, 8-bit
+      Dithering: Dithering in Frame Direction: Enabled
+      Output: Conversion: YCbCr422 to YUV444 Conversion Enable (from YCbCr-422): Use previous pixel
+      Input: Pixel Data: Clipping: No Clipping (Default)
+      Input: Image: Capture Start Offset: Vertical: 1
+      Input: Image: Size: Vertical: 480
+      Input: Image: Capture Start Offset: Horizontal: 1
+      Input: Image: Size: Horizontal: 640
+      Input: Virtual Channel select: 0
+      Input: Sign Extension Disable: True
+      Input: Interlaced: Even Field Detect: Enabled
+      Input: Interlaced: Even Field Number: 0
+      Output: Buffer 1: Name: vin_image_buffer_1
+      Output: Buffer 2: Name: vin_image_buffer_2
+      Output: Buffer 3: Name: vin_image_buffer_3
+      Output: Buffer 1: Memory Section: .sdram_noinit
+      Output: Buffer 2: Memory Section: .sdram_noinit
+      Output: Buffer 3: Memory Section: .sdram_noinit
+      Output: Conversion: Data Conversion Mode: Not Converted
+      Output: Conversion: RGB: ARGB-1555 Alpha Value: 1
+      Input: YUV: Byte Swap: Enabled
+      Input: RGB: 32-bit Extend: Disabled
+      Input: YUV: Transform Disable and 10-bit Extend: False
+      Input: YUV: Transform Mode: Y and CbCr
+      Input: RGB: 32-bit Fixed Alpha Value: 0xAA
+      Output: Conversion: YUV: UV Address: 0x0
+      Output: Conversion: YUV to RGB: Coefficients: Y Coefficient 2: 1.164
+      Output: Conversion: YUV to RGB: Coefficients: Round Down Disable: False
+      Output: Conversion: YUV to RGB: Coefficients: Y Subtraction Coefficient 2: 256
+      Output: Conversion: YUV to RGB: Coefficients: Cr to G Coefficient: 0.813
+      Output: Conversion: YUV to RGB: Coefficients: Cr to R Coefficient: 1.596
+      Output: Conversion: YUV to RGB: Coefficients: Cb to G Coefficient: 0.392
+      Output: Conversion: YUV to RGB: Coefficients: Cb to B Coefficient: 2.017
+      Output: Conversion: YUV to RGB: Scaling: Interpolation: B/Cb Component: Bilinear Method
+      Output: Conversion: YUV to RGB: Scaling: Interpolation: G/Y Component: Bilinear Method
+      Output: Conversion: YUV to RGB: Scaling: Interpolation: R/Cr Component: Bilinear Method
+      Output: Conversion: YUV to RGB: Scaling: Interpolation: Scale Up/Down Override: Use Component Configuration
+      Output: Scaling: Interpolation: Bilinear Advanced: Enabled
+      Output: Scaling: Scale Up Pixel Count: Pixel count after scale-up: 1 + ((n - 1) × scale-up factor)
+      Output: Image: Size: Vertical: 480
+      Output: Image: Size: Horizontal: 640
+      Output: Conversion: RGB to YUV: R to Y Coefficient: 263
+      Output: Conversion: RGB to YUV: G to Y Coefficient: 516
+      Output: Conversion: RGB to YUV: B to Y Coefficient: 100
+      Output: Conversion: RGB to YUV: Y Offset: 256
+      Output: Conversion: RGB to YUV: Y Down Shift Round Off: Disabled
+      Output: Conversion: RGB to YUV: R to Cb Coefficient: -152
+      Output: Conversion: RGB to YUV: G to Cb Coefficient: -298
+      Output: Conversion: RGB to YUV: B to Cb Coefficient: 450
+      Output: Conversion: RGB to YUV: Cb Offset: 2048
+      Output: Conversion: RGB to YUV: Cb Down Shift Round Off: Disabled
+      Output: Conversion: RGB to YUV: R to Cr Coefficient: 450
+      Output: Conversion: RGB to YUV: G to Cr Coefficient: -377
+      Output: Conversion: RGB to YUV: B to Cr Coefficient: -73
+      Output: Conversion: RGB to YUV: Cr Offset: 2048
+      Output: Conversion: RGB to YUV: Cr Down Shift Round Off: Disabled
+      Interrupts: Status: Frame Memory Write Completion Notify
+      Interrupts: Scanline Compare Value (0: Disabled): 0
+      Interrupts: Callback: cam_vin_callback
+      Interrupts: Callback Context: NULL
+      Interrupts: Priorities: Status Notify: Priority 12
+      Interrupts: Priorities: Error: Priority 12
+      
+      Instance "g_mipi_csi0 MIPI Camera Interface (r_mipi_csi)"
+        General: Name: g_mipi_csi0
+        Number of Data Lanes: 2
+        Zero Length Long Packet Output Mode: Disabled
+        Error Frame Notification Mode: Enabled
+        Reserved Packet Reception: Enabled
+        ECC Check 24-bit mode (CSI-2 Ver 1.3 Mode): Enabled
+        LFSR (Descramble) Enable Mode: Disabled
+        Frequency Clock Rate Adjust: 0
+        Data Lane Skew Adjustment: 0
+        Receive: Data Enable (User Options - Configured VIN input data format is always enabled): 
+        Interrupts: Interrupt Priorities: Receive Interrupt: Priority 12
+        Interrupts: Interrupt Priorities: Data Lane Interrupt: Priority 12
+        Interrupts: Interrupt Priorities: Virtual Channel 0..15 Interrupt: Priority 12
+        Interrupts: Interrupt Priorities: Power Management: Priority 12
+        Interrupts: Interrupt Priorities: Short Packet FIFO: Priority 12
+        Interrupts: Receive Events: 
+        Interrupts: Data Lane 0 Events: Start of Transmission Error Detect, Start of Transmission Synchronization Error Detect, Control Error Detect, Escape Sequence Error Detect
+        Interrupts: Data Lane 1 Events: Start of Transmission Error Detect, Start of Transmission Synchronization Error Detect, Control Error Detect, Escape Sequence Error Detect
+        Interrupts: Virtual Channels: Virtual Channel 0: Events: Error Malformed Packet Detect, Error ECC 2-bit Detect, Error CRC Packet Detect, Error ID Packet Detect, Error Word Count Packet Detect, Error ECC 1-bit (corrected) Packet Detect, Error Frame Sync Detect, Error Frame Data Detect, Generic Short Packet FIFO Overflow Detect
+        Interrupts: Virtual Channels: Virtual Channel 1: Events: Error Malformed Packet Detect, Error ECC 2-bit Detect, Error CRC Packet Detect, Error ID Packet Detect, Error Word Count Packet Detect, Error ECC 1-bit (corrected) Packet Detect, Error Frame Sync Detect, Error Frame Data Detect, Generic Short Packet FIFO Overflow Detect
+        Interrupts: Virtual Channels: Virtual Channel 2: Events: Error Malformed Packet Detect, Error ECC 2-bit Detect, Error CRC Packet Detect, Error ID Packet Detect, Error Word Count Packet Detect, Error ECC 1-bit (corrected) Packet Detect, Error Frame Sync Detect, Error Frame Data Detect, Generic Short Packet FIFO Overflow Detect
+        Interrupts: Virtual Channels: Virtual Channel 3: Events: Error Malformed Packet Detect, Error ECC 2-bit Detect, Error CRC Packet Detect, Error ID Packet Detect, Error Word Count Packet Detect, Error ECC 1-bit (corrected) Packet Detect, Error Frame Sync Detect, Error Frame Data Detect, Generic Short Packet FIFO Overflow Detect
+        Interrupts: Virtual Channels: Virtual Channel 4: Events: Error Malformed Packet Detect, Error ECC 2-bit Detect, Error CRC Packet Detect, Error ID Packet Detect, Error Word Count Packet Detect, Error ECC 1-bit (corrected) Packet Detect, Error Frame Sync Detect, Error Frame Data Detect, Generic Short Packet FIFO Overflow Detect
+        Interrupts: Virtual Channels: Virtual Channel 5: Events: Error Malformed Packet Detect, Error ECC 2-bit Detect, Error CRC Packet Detect, Error ID Packet Detect, Error Word Count Packet Detect, Error ECC 1-bit (corrected) Packet Detect, Error Frame Sync Detect, Error Frame Data Detect, Generic Short Packet FIFO Overflow Detect
+        Interrupts: Virtual Channels: Virtual Channel 6: Events: Error Malformed Packet Detect, Error ECC 2-bit Detect, Error CRC Packet Detect, Error ID Packet Detect, Error Word Count Packet Detect, Error ECC 1-bit (corrected) Packet Detect, Error Frame Sync Detect, Error Frame Data Detect, Generic Short Packet FIFO Overflow Detect
+        Interrupts: Virtual Channels: Virtual Channel 7: Events: Error Malformed Packet Detect, Error ECC 2-bit Detect, Error CRC Packet Detect, Error ID Packet Detect, Error Word Count Packet Detect, Error ECC 1-bit (corrected) Packet Detect, Error Frame Sync Detect, Error Frame Data Detect, Generic Short Packet FIFO Overflow Detect
+        Interrupts: Virtual Channels: Virtual Channel 8: Events: Error Malformed Packet Detect, Error ECC 2-bit Detect, Error CRC Packet Detect, Error ID Packet Detect, Error Word Count Packet Detect, Error ECC 1-bit (corrected) Packet Detect, Error Frame Sync Detect, Error Frame Data Detect, Generic Short Packet FIFO Overflow Detect
+        Interrupts: Virtual Channels: Virtual Channel 9: Events: Error Malformed Packet Detect, Error ECC 2-bit Detect, Error CRC Packet Detect, Error ID Packet Detect, Error Word Count Packet Detect, Error ECC 1-bit (corrected) Packet Detect, Error Frame Sync Detect, Error Frame Data Detect, Generic Short Packet FIFO Overflow Detect
+        Interrupts: Virtual Channels: Virtual Channel 10: Events: Error Malformed Packet Detect, Error ECC 2-bit Detect, Error CRC Packet Detect, Error ID Packet Detect, Error Word Count Packet Detect, Error ECC 1-bit (corrected) Packet Detect, Error Frame Sync Detect, Error Frame Data Detect, Generic Short Packet FIFO Overflow Detect
+        Interrupts: Virtual Channels: Virtual Channel 11: Events: Error Malformed Packet Detect, Error ECC 2-bit Detect, Error CRC Packet Detect, Error ID Packet Detect, Error Word Count Packet Detect, Error ECC 1-bit (corrected) Packet Detect, Error Frame Sync Detect, Error Frame Data Detect, Generic Short Packet FIFO Overflow Detect
+        Interrupts: Virtual Channels: Virtual Channel 12: Events: Error Malformed Packet Detect, Error ECC 2-bit Detect, Error CRC Packet Detect, Error ID Packet Detect, Error Word Count Packet Detect, Error ECC 1-bit (corrected) Packet Detect, Error Frame Sync Detect, Error Frame Data Detect, Generic Short Packet FIFO Overflow Detect
+        Interrupts: Virtual Channels: Virtual Channel 13: Events: Error Malformed Packet Detect, Error ECC 2-bit Detect, Error CRC Packet Detect, Error ID Packet Detect, Error Word Count Packet Detect, Error ECC 1-bit (corrected) Packet Detect, Error Frame Sync Detect, Error Frame Data Detect, Generic Short Packet FIFO Overflow Detect
+        Interrupts: Virtual Channels: Virtual Channel 14: Events: Error Malformed Packet Detect, Error ECC 2-bit Detect, Error CRC Packet Detect, Error ID Packet Detect, Error Word Count Packet Detect, Error ECC 1-bit (corrected) Packet Detect, Error Frame Sync Detect, Error Frame Data Detect, Generic Short Packet FIFO Overflow Detect
+        Interrupts: Virtual Channels: Virtual Channel 15: Events: Error Malformed Packet Detect, Error ECC 2-bit Detect, Error CRC Packet Detect, Error ID Packet Detect, Error Word Count Packet Detect, Error ECC 1-bit (corrected) Packet Detect, Error Frame Sync Detect, Error Frame Data Detect, Generic Short Packet FIFO Overflow Detect
+        Interrupts: Power Management: Power Management: Events: 
+        Interrupts: Short Packet FIFO: Events: Overflow Detect
+        Interrupts: Callback: mipi_csi0_callback
+        Interrupts: Callback Context: NULL
+        
+        Instance "g_mipi_phy0 MIPI Physical Layer (r_mipi_phy)"
+          General: Name: g_mipi_phy0
+          DSI PLL Frequency (MHz): 1000.00
+          Timing: LP Clock Divider: 5
+          Timing: TINIT (ns): 600016
+          Timing: THSPREP: ns: 74
+          Timing: THSPREP: UI: 0
+          Timing: THSSETT: ns: 125
+          Timing: THSSETT: UI: 0
+          Timing: THSZERO: ns: 143
+          Timing: THSZERO: UI: 0
+          Timing: THSTRAIL: ns: 96
+          Timing: THSTRAIL: UI: 0
+          Timing: TCLKPOST: ns: 366
+          Timing: TCLKPOST: UI: 0
+          Timing: TCLKPRE: ns: 122
+          Timing: TCLKPRE: UI: 0
+          Timing: TCLKPREP: ns: 85
+          Timing: TCLKPREP: UI: 0
+          Timing: TCLKSETT: ns: 150
+          Timing: TCLKSETT: UI: 0
+          Timing: TCLKMISS: ns: 20
+          Timing: TCLKMISS: UI: 0
+          Timing: TLPX: ns: 104
+          Timing: TLPX: UI: 0
+          Timing: TCLKTRL: ns: 99
+          Timing: TCLKTRL: UI: 0
+          Timing: TCLKZERO: ns: 548
+          Timing: TCLKZERO: UI: 0
+          Timing: THSEXIT: ns: 13
+          Timing: THSEXIT: UI: 0
+          
+    Instance "Arm Ethos-U Core Driver Wrapper (rm_ethosu)"
+      Name: g_rm_ethosu0
+      Callback: NULL
+      NPU Interrupt Priority: Priority 12
+      Enable Secure Mode: Enabled
+      Enable Privilege Mode: Enabled
+      
+      Instance "Arm Ethos-U Core Driver"
+        Name: g_ethosu0
+        
+    Instance "g_time_counter Timer, General PWM (r_gpt)"
+      General: Name: g_time_counter
+      General: Channel: 0
+      General: Mode: Periodic
+      General: Period: 0x10000
+      General: Compare Match: Compare Match A: Status: Disabled
+      General: Compare Match: Compare Match A: Compare match value: 0x10000
+      General: Compare Match: Compare Match B: Status: Disabled
+      General: Compare Match: Compare Match B: Compare match value: 0x10000
+      General: Compare Match: Compare Match C: Status: Disabled
+      General: Compare Match: Compare Match C: Compare match value: 0x10000
+      General: Compare Match: Compare Match D: Status: Disabled
+      General: Compare Match: Compare Match D: Compare match value: 0x10000
+      General: Compare Match: Compare Match E: Status: Disabled
+      General: Compare Match: Compare Match E: Compare match value: 0x10000
+      General: Compare Match: Compare Match F: Status: Disabled
+      General: Compare Match: Compare Match F: Compare match value: 0x10000
+      General: Period Unit: Raw Counts
+      Output: Custom Waveform: GTIOA: Initial Output Level: Pin Level Low
+      Output: Custom Waveform: GTIOA: Cycle End Output Level: Pin Level Retain
+      Output: Custom Waveform: GTIOA: Compare Match Output Level: Pin Level Retain
+      Output: Custom Waveform: GTIOA: Retain Output Level at Count Stop: Disabled
+      Output: Custom Waveform: GTIOB: Initial Output Level: Pin Level Low
+      Output: Custom Waveform: GTIOB: Cycle End Output Level: Pin Level Retain
+      Output: Custom Waveform: GTIOB: Compare Match Output Level: Pin Level Retain
+      Output: Custom Waveform: GTIOB: Retain Output Level at Count Stop: Disabled
+      Output: Custom Waveform: Custom Waveform Enable: Disabled
+      Output: Duty Cycle Percent (only applicable in PWM mode): 50
+      Output: GTIOCA Output Enabled: False
+      Output: GTIOCA Stop Level: Pin Level Low
+      Output: GTIOCB Output Enabled: False
+      Output: GTIOCB Stop Level: Pin Level Low
+      Input: Count Up Source: 
+      Input: Count Down Source: 
+      Input: Start Source: 
+      Input: Stop Source: 
+      Input: Clear Source: 
+      Input: Capture A Source: 
+      Input: Capture B Source: 
+      Input: Noise Filter A Sampling Clock Select: No Filter
+      Input: Noise Filter B Sampling Clock Select: No Filter
+      Pin Polarity: GTIOCnA Polarity: Normal
+      Pin Polarity: GTIOCnB Polarity: Normal
+      Interrupts: Callback: NULL
+      Interrupts: Overflow/Crest Interrupt Priority: Disabled
+      Interrupts: Capture/Compare match A Interrupt Priority: Disabled
+      Interrupts: Capture/Compare match B Interrupt Priority: Disabled
+      Interrupts: Compare Match C Interrupt Priority: Disabled
+      Interrupts: Compare Match D Interrupt Priority: Disabled
+      Interrupts: Compare Match E Interrupt Priority: Disabled
+      Interrupts: Compare Match F Interrupt Priority: Disabled
+      Interrupts: Underflow/Trough Interrupt Priority: Disabled
+      Extra Features: Extra Features: Disabled
+      Extra Features: Output Disable: POEG Link: POEG Channel 0
+      Extra Features: Output Disable: Output Disable POEG Trigger: 
+      Extra Features: ADC Trigger: Start Event Trigger (Channels with GTINTAD only): 
+      Extra Features: ADC Trigger: ADC A Compare Match (Raw Counts): 0
+      Extra Features: ADC Trigger: ADC B Compare Match (Raw Counts): 0
+      Extra Features: Dead Time (Value range varies with Channel): Dead Time Count Up (Raw Counts): 0
+      Extra Features: Dead Time (Value range varies with Channel): Dead Time Count Down (Raw Counts) (Channels with GTDVD only): 0
+      Extra Features: Interrupt Skipping (Channels with GTITC only): Interrupt to Count: None
+      Extra Features: Interrupt Skipping (Channels with GTITC only): Interrupt Skip Count: 0
+      Extra Features: Interrupt Skipping (Channels with GTITC only): Skip ADC Events: None
+      Extra Features: Output Disable: GTIOCA Disable Setting: Disable Prohibited
+      Extra Features: Output Disable: GTIOCB Disable Setting: Disable Prohibited
       

@@ -25,6 +25,7 @@
             <slot name="P105.CPU0" secure="true"/>
             <slot name="P106.CPU0" secure="true"/>
             <slot name="P107.CPU0" secure="true"/>
+            <slot name="P108.CPU0" secure="true"/>
             <slot name="P109.CPU0" secure="true"/>
             <slot name="P111.CPU0" secure="true"/>
             <slot name="P112.CPU0" secure="true"/>
@@ -193,6 +194,10 @@
             <slot name="PD07.CPU0" secure="true"/>
         </peripheral>
         <peripheral name="IIC1.CPU0" group="IIC" security="s"/>
+        <peripheral name="IIC0.CPU0" group="IIC" security="s"/>
+        <peripheral name="GPT12.CPU0" group="GPT" security="s"/>
+        <peripheral name="GLCDC.CPU0" security="s"/>
+        <peripheral name="GPT0.CPU0" group="GPT" security="s"/>
         <peripheral name="ICU.CPU0">
             <slot name="IRQ0.CPU0" secure="true"/>
             <slot name="IRQ1.CPU0" secure="true"/>
@@ -212,6 +217,20 @@
             <slot name="IRQ15.CPU0" secure="true"/>
             <slot name="IRQ16.CPU0" secure="true"/>
             <slot name="IRQ17.CPU0" secure="true"/>
+            <slot name="IRQ18.CPU0" secure="true"/>
+            <slot name="IRQ19.CPU0" secure="true"/>
+            <slot name="IRQ20.CPU0" secure="true"/>
+            <slot name="IRQ21.CPU0" secure="true"/>
+            <slot name="IRQ22.CPU0" secure="true"/>
+            <slot name="IRQ23.CPU0" secure="true"/>
+            <slot name="IRQ24.CPU0" secure="true"/>
+            <slot name="IRQ25.CPU0" secure="true"/>
+            <slot name="IRQ26.CPU0" secure="true"/>
+            <slot name="IRQ27.CPU0" secure="true"/>
+            <slot name="IRQ28.CPU0" secure="true"/>
+            <slot name="IRQ29.CPU0" secure="true"/>
+            <slot name="IRQ30.CPU0" secure="true"/>
+            <slot name="IRQ31.CPU0" secure="true"/>
         </peripheral>
     </partition>
 </azone>

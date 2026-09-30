@@ -46,6 +46,11 @@ void R_BSP_WarmStart (bsp_warm_start_event_t event)
         /* Configure pins. */
         R_IOPORT_Open(&IOPORT_CFG_CTRL, &IOPORT_CFG_NAME);
 
+        /* LCD panel (parallel RGB 1024x600): release DISP_RESET (P606) after a delay, as the FSP660 sample does
+         * with its g_bsp_pin_cfg_glcd (power-on-reset workaround). Without this the panel stays in reset. */
+        R_BSP_SoftwareDelay(100, BSP_DELAY_UNITS_MILLISECONDS);
+        R_IOPORT_PinWrite(&IOPORT_CFG_CTRL, BSP_IO_PORT_06_PIN_06, BSP_IO_LEVEL_HIGH);
+
 #if BSP_CFG_SDRAM_ENABLED
 
         /* Setup SDRAM and initialize it. Must configure pins first. */

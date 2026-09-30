@@ -43,7 +43,7 @@ EXPORT ER knl_start_device( void )
 	ER	err	= E_OK;
 
 #if DEVCNF_USE_HAL_IIC
-	err = dev_init_hal_i2c(0, &g_i2c_master0_ctrl, &g_i2c_master0_cfg);
+	err = dev_init_hal_i2c(0, &g_cam_i2c_master_ctrl, &g_cam_i2c_master_cfg);
 	if(err < E_OK) return err;
 #endif
 
