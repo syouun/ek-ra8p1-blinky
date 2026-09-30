@@ -9,7 +9,7 @@
 | # | ソフトウェア | 著作権者 | ライセンス | 配置場所 | 入手先 |
 |---|---|---|---|---|---|
 | 1 | μT-Kernel 3.0 BSP2 | TRON フォーラム | T-License 2.2 | `mtk3bsp2_ra8p1_ek/mtk3_bsp2/` | https://github.com/tron-forum/mtk3_bsp2 , https://github.com/tron-forum/mtk3bsp2_samples |
-| 2 | Renesas Flexible Software Package (FSP) v6.6.0（CMSIS を含む） | Renesas Electronics Corporation / Arm Limited | BSD-3-Clause / Apache-2.0 (CMSIS) | `*/ra/`, `*/ra_gen/`, `*/ra_cfg/`, `*/script/` | https://github.com/renesas/fsp |
+| 2 | Renesas Flexible Software Package (FSP) v6.6.0（CMSIS を含む） | Renesas Electronics Corporation / Arm Limited | BSD-3-Clause / Apache-2.0 (CMSIS) | `*/ra/`, `*/ra_gen/`, `*/ra_cfg/`, `*/script/`, `tools/linker/`（e² studio が生成したリンカ設定） | https://github.com/renesas/fsp |
 | 3 | EK-RA8P1 Vision AI 顔検出サンプル（`ek_ra8p1_vision_face_detection_yolo_fastest_FSP660`） | Renesas Electronics Corporation | BSD-3-Clause | `mtk3bsp2_ra8p1_ek/src/`（camera_layer, display_layer, external_memory, time_counter, *_thread_entry.c, common_util.* 等。μT-Kernel 対応のため改変） | https://github.com/renesas/ruhmi-framework-mcu |
 | 4 | RUHMI Framework による変換済みモデルコード（YOLO-fastest） | EdgeCortix Inc. / Renesas Electronics Corporation | Apache-2.0 | `mtk3bsp2_ra8p1_ek/src/ai_application/ruhmi_conversion_results/` | https://github.com/renesas/ruhmi-framework-mcu |
 | 5 | 推論後処理・画像処理ユーティリティ（Arm ML Embedded Evaluation Kit 由来） | Arm Limited | Apache-2.0 | `mtk3bsp2_ra8p1_ek/src/ai_application/common/`, `face_detection/` | https://github.com/renesas/ruhmi-framework-mcu |
@@ -24,5 +24,5 @@
 
 ## 応募者が作成した部分
 
-`src/rtos_to_mtk.h`、`Application/app_main.c` のカメラ・AI タスク生成部分、各ソースへの μT-Kernel 対応の改変、`src/hal_warmstart.c` の LCD リセット処理、`docs/` 以下のドキュメントは応募者（田中 真）が作成したもので、[MIT License](LICENSE) で公開します。
+`Application/` 以下（6 タスク・転倒判定）、`src/rtos_to_mtk.h`・`src/app_config.h`・`src/app_hooks.h`、各ソースへの μT-Kernel 対応の改変、`src/hal_warmstart.c` の LCD リセット処理、`tests/`・`tools/`・`docs/` 以下は応募者（田中 真）が作成したもので、[MIT License](LICENSE) で公開します。
 既存ソフトウェアのファイルに加えた改変部分は、元のファイルのライセンスに従います。

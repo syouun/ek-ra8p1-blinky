@@ -23,7 +23,15 @@ void app_sysmon_task(INT stacd, void *exinf)
 {
     /* Tasks whose heartbeat must keep moving. The judge task depends on the AI task, and the
      * alert task only runs on events, so they are reported but not treated as stalled. */
-    static const app_task_idx_t watched[] = { APP_TASK_CAMERA, APP_TASK_AI, APP_TASK_UI };
+    static const app_task_idx_t watched[] = {
+        APP_TASK_CAMERA,
+#if (APP_FALL_DETECTION_ENABLE == 1)
+        APP_TASK_AI,       /* beats in app_post_inference_result() */
+#endif
+#if (APP_PRIVACY_UI_ENABLE == 1)
+        APP_TASK_UI,
+#endif
+    };
     UW   last[APP_TASK_NUM]  = {0};
     UW   still[APP_TASK_NUM] = {0};
     UW   uptime_s = 0;
