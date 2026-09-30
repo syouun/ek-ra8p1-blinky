@@ -72,7 +72,8 @@ LCD には生の映像を映さず、状態と検出枠だけを表示して、�
     ├── setup_guide.md           ★動作確認手順書（ビルド・書き込み・確認方法）
     ├── design.md                設計書（タスク構成・転倒判定）
     ├── porting_notes.md         FreeRTOS サンプル → μT-Kernel 移植ノウハウ集
-    └── presentation.pptx        紹介スライド
+    ├── presentation.pptx        紹介スライド（PowerPoint）
+    └── presentation.pdf         紹介スライド（PDF・ブラウザで閲覧可）
 ```
 
 ---
